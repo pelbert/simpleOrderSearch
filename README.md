@@ -2,7 +2,7 @@
 simpleOrderSearch
 
 
-I want to asses your ability to create a web application and web service. It truly is the bare minimum of knowledge necessary to be successful in this position. I don't want you to spend a lot of time on this. You should be able to do this in a few hours if the job is right for you.
+I want to asses your ability to create an application and web service. It truly is the bare minimum of knowledge necessary to be successful in this position. I don't want you to spend a lot of time on this. You should be able to do this in an hour or so if the job is right for you.
 
 Order Search
 This programming task consists of building a simple web application to search for orders. Fork this repository and create your application. It should take this input from the user:
