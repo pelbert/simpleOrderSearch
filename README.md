@@ -17,8 +17,10 @@ The file contains an array whose elements represent orders. The data should be d
 
 The application calling the service can be a console app. You have total freedom to do what you want but make sure it can do these two things:
 
-• Validate that the user has provided the right criteria to make a search 
-• Provide an offset and page value for pagination. 
+• Validate that the user has provided the right criteria to make a search
+
+• Provide an offset and page value for pagination.
+
 • Write the outputs of the service call to a console window. 
 
 Create a pull request once you have it working. I will clone your repository, verify that it works, and evaluate it.
