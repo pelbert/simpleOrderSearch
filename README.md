@@ -7,16 +7,18 @@ I want to asses your ability to create an application and web service. It truly 
 Order Search
 This programming task consists of building a simple web application to search for orders. Fork this repository and create your application. It should take this input from the user:
 
-(Order Number || (Region && Supplier)) && Date
+(Order Number || (MSA && Status)) && CompletionDte
 
-The application will call a service that you create using C#. I have provided some sample data for the application in this file
+The console application will call a service that you create using C#. I have provided some sample data for the application in the JSON file in the data folder.
 
-Order Documents
 
-The file contains an array whose elements represent orders. The data should be defined as a constant in your service.
+
+The file contains an array whose elements represent orders. The data should be defined as a model in your service.
 
 The application calling the service can be a console app. You have total freedom to do what you want but make sure it can do these two things:
 
 • Validate that the user has provided the right criteria to make a search 
+• Provide an offset and page value for pagination. 
 • Write the outputs of the service call to a console window. 
+
 Create a pull request once you have it working. I will clone your repository, verify that it works, and evaluate it.
