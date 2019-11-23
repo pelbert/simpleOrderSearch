@@ -1,0 +1,30 @@
+{
+  "name": "simpleordersearch",
+  "version": "1.0.0",
+  "description": "console program that uses c# webapi to search for orders",
+  "main": "index.js",
+  "keywords": [
+    "console",
+    "c#",
+    "c-sharp",
+    "api",
+    "app",
+    "webapi",
+    "dotnet"
+  ],
+  "scripts": {
+    "console": "dotnet ./ConsoleApp/bin/Prod/ConsoleApp.dll",
+    "api": "dotnet ./simpleApi/bin/Prod/simpleApi.dll"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/somberSomni/simpleOrderSearch.git"
+  },
+  "author": "somber somni",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/somberSomni/simpleOrderSearch/issues"
+  },
+  "homepage": "https://github.com/somberSomni/simpleOrderSearch#readme",
+  "dependencies": {}
+}
