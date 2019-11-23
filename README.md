@@ -1,10 +1,6 @@
 # simpleOrderSearch
 simpleOrderSearch
 
-When you clone this project, make sure to use npm install to get everything you need.
-```bash
-npm install
-```
 To start the web api, open up a new terminal and type
 ```bash
 npm run api
@@ -15,3 +11,5 @@ npm run console
 ```
 
 The instructions for the program will appear when you start the console app.
+You can look at all orders using pagination, which shows 3 results at a time. Type the page number to jump around.
+You can also search a single order by ID by typing in a number. Then you type in the Completion Date to make sure its the correct order.
