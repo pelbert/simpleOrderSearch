@@ -1,0 +1,9 @@
+c:\users\kbotta\documents\visual studio 2015\Projects\SearchOrdersConsole\SearchOrdersConsole\bin\Debug\SearchOrdersConsole.exe.config
+c:\users\kbotta\documents\visual studio 2015\Projects\SearchOrdersConsole\SearchOrdersConsole\obj\Debug\SearchOrdersConsole.csprojResolveAssemblyReference.cache
+c:\users\kbotta\documents\visual studio 2015\Projects\SearchOrdersConsole\SearchOrdersConsole\bin\Debug\SearchOrdersConsole.exe
+c:\users\kbotta\documents\visual studio 2015\Projects\SearchOrdersConsole\SearchOrdersConsole\bin\Debug\SearchOrdersConsole.pdb
+c:\users\kbotta\documents\visual studio 2015\Projects\SearchOrdersConsole\SearchOrdersConsole\obj\Debug\SearchOrdersConsole.exe
+c:\users\kbotta\documents\visual studio 2015\Projects\SearchOrdersConsole\SearchOrdersConsole\obj\Debug\SearchOrdersConsole.pdb
+C:\Users\KBotta\Source\Repos\simpleOrderSearch2\SearchOrdersConsole\SearchOrdersConsole\bin\Debug\SearchOrdersConsole.exe.config
+C:\Users\KBotta\Source\Repos\simpleOrderSearch2\SearchOrdersConsole\SearchOrdersConsole\obj\Debug\SearchOrdersConsole.exe
+C:\Users\KBotta\Source\Repos\simpleOrderSearch2\SearchOrdersConsole\SearchOrdersConsole\obj\Debug\SearchOrdersConsole.pdb
