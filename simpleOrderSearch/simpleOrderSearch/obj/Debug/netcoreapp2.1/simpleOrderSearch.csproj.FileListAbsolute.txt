@@ -1,0 +1,11 @@
+C:\Users\sxv1190\Projects\TUYA_SimpleOrderSearch_Sangeetha\simpleOrderSearch\simpleOrderSearch\bin\Debug\netcoreapp2.1\simpleOrderSearch.deps.json
+C:\Users\sxv1190\Projects\TUYA_SimpleOrderSearch_Sangeetha\simpleOrderSearch\simpleOrderSearch\bin\Debug\netcoreapp2.1\simpleOrderSearch.runtimeconfig.json
+C:\Users\sxv1190\Projects\TUYA_SimpleOrderSearch_Sangeetha\simpleOrderSearch\simpleOrderSearch\bin\Debug\netcoreapp2.1\simpleOrderSearch.runtimeconfig.dev.json
+C:\Users\sxv1190\Projects\TUYA_SimpleOrderSearch_Sangeetha\simpleOrderSearch\simpleOrderSearch\bin\Debug\netcoreapp2.1\simpleOrderSearch.dll
+C:\Users\sxv1190\Projects\TUYA_SimpleOrderSearch_Sangeetha\simpleOrderSearch\simpleOrderSearch\obj\Debug\netcoreapp2.1\simpleOrderSearch.csprojAssemblyReference.cache
+C:\Users\sxv1190\Projects\TUYA_SimpleOrderSearch_Sangeetha\simpleOrderSearch\simpleOrderSearch\obj\Debug\netcoreapp2.1\simpleOrderSearch.csproj.CoreCompileInputs.cache
+C:\Users\sxv1190\Projects\TUYA_SimpleOrderSearch_Sangeetha\simpleOrderSearch\simpleOrderSearch\obj\Debug\netcoreapp2.1\simpleOrderSearch.AssemblyInfoInputs.cache
+C:\Users\sxv1190\Projects\TUYA_SimpleOrderSearch_Sangeetha\simpleOrderSearch\simpleOrderSearch\obj\Debug\netcoreapp2.1\simpleOrderSearch.AssemblyInfo.cs
+C:\Users\sxv1190\Projects\TUYA_SimpleOrderSearch_Sangeetha\simpleOrderSearch\simpleOrderSearch\bin\Debug\netcoreapp2.1\simpleOrderSearch.pdb
+C:\Users\sxv1190\Projects\TUYA_SimpleOrderSearch_Sangeetha\simpleOrderSearch\simpleOrderSearch\obj\Debug\netcoreapp2.1\simpleOrderSearch.dll
+C:\Users\sxv1190\Projects\TUYA_SimpleOrderSearch_Sangeetha\simpleOrderSearch\simpleOrderSearch\obj\Debug\netcoreapp2.1\simpleOrderSearch.pdb
