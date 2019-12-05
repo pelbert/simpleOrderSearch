@@ -2,7 +2,7 @@
 simpleOrderSearch
 
 
-I want to assess your ability to create an application and web service. It truly is the bare minimum of knowledge necessary to be successful in this position. I don't want you to spend a lot of time on this. You should be able to do this in an hour or so if the job is right for you.
+I want to assess your ability to create an application and REST API service. It truly is the bare minimum of knowledge necessary to be successful in this position. I don't want you to spend a lot of time on this. You should be able to do this in an hour or so if the job is right for you.
 
 Order Search
 
