@@ -1,0 +1,11 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/SimpleOrderSearchConsole/.vs/SimpleOrderSearchConsole/v16
+/SimpleOrderSearchConsole/SimpleOrderSearchConsole/bin/Debug
+/SimpleOrderSearchConsole/SimpleOrderSearchConsole/obj/Debug
+/SearchOrderWebService/.vs/SearchOrderWebService
+/SearchOrderWebService/packages
+/SearchOrderWebService/SearchOrderWebService/bin
+/SearchOrderWebService/SearchOrderWebService/obj/Debug
