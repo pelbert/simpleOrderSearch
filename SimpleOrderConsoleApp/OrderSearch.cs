@@ -82,7 +82,7 @@ namespace SimpleOrderConsoleApp
             };
                         
             string parameter = "?obj.status=" + input.Status + "&obj.MSA=" + input.MSA + "&obj.OrderID=" + input.OrderId + "&obj.CompletionDte=" + NewDate + "&obj.Limit=" + input.Limit;
-            apiUrl = "http://localhost:60220/api/Product/Search" + parameter;
+            apiUrl = "http://localhost:54861/api/Order/Search" + parameter;
 
             GetRecord();
             int intoffset = 0;
