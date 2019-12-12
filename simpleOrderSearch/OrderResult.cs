@@ -6,7 +6,7 @@ namespace simpleOrderSearch
 {
     public class OrderResult
     {
-        public IEnumerable<Order> results
+        public IEnumerable<Order> Results
         {
             get;
             set;
@@ -14,16 +14,16 @@ namespace simpleOrderSearch
 
         public int count
         {
-            get { return results.Count(); }
+            get { return Results.Count(); }
         }
 
-        public int pageNumber
+        public int PageNumber
         {
             get;
             set;
         }
 
-        public int pageSize
+        public int PageSize
         {
             get;
             set;

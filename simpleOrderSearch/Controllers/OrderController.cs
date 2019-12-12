@@ -29,9 +29,9 @@ namespace simpleOrderSearch.Controllers
                 var take = (request.ContainsKey("size")) ? Math.Max(request["size"].GetInt32(), 0) : 0;
                 return new OrderResult()
                 {
-                    results = OrderStore.instance.fetch(id, date, page, take),
-                    pageNumber = page,
-                    pageSize = (take == 0 && page > 0) ? 25 : take
+                    Results = OrderStore.instance.fetch(id, date, page, take),
+                    PageNumber = page,
+                    PageSize = (take == 0 && page > 0) ? 25 : take
                 };
             }
             else if(request.ContainsKey("MSA") && request.ContainsKey("Status"))
@@ -43,9 +43,9 @@ namespace simpleOrderSearch.Controllers
                 var take = (request.ContainsKey("size")) ? Math.Max(request["size"].GetInt32(), 0) : 0;
                 return new OrderResult()
                 {
-                    results = OrderStore.instance.fetch(msa, status, date, page, take),
-                    pageNumber = page,
-                    pageSize = (take == 0 && page > 0) ? 25 : take
+                    Results = OrderStore.instance.fetch(msa, status, date, page, take),
+                    PageNumber = page,
+                    PageSize = (take == 0 && page > 0) ? 25 : take
                 };
             }
             else

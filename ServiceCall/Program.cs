@@ -27,7 +27,7 @@ namespace ServiceCall
                 {
                     Console.Write("Enter the order number: ");
                     return Console.ReadLine();
-                }, "[0-9]").asNumber());
+                }, "[0-9]").AsNumber());
                 //dict.Add("OrderID", Console.ReadLine().asNumber());
             }
             else
@@ -36,13 +36,13 @@ namespace ServiceCall
                 {
                     Console.Write("Enter the MSA (value is a number): ");
                     return Console.ReadLine();
-                }, "[0-9]").asNumber());
+                }, "[0-9]").AsNumber());
                 Console.WriteLine();
                 dict.Add("Status", validateData(() =>
                 {
                     Console.Write("Enter the status (value is a number): ");
                     return Console.ReadLine();
-                }, "[0-9]").asNumber());
+                }, "[0-9]").AsNumber());
             }
             Console.WriteLine();
             string date = validateData(() => {
@@ -63,7 +63,7 @@ namespace ServiceCall
             }, "[0-9]", true);
             if(!String.IsNullOrEmpty(pagenumber))
             {
-                dict.Add("page", pagenumber.asNumber());
+                dict.Add("page", pagenumber.AsNumber());
             }
             Console.WriteLine();
             string pagesize = validateData(() =>
@@ -73,7 +73,7 @@ namespace ServiceCall
             }, "[0-9]", true);
             if (!String.IsNullOrEmpty(pagesize))
             {
-                dict.Add("size", pagesize.asNumber());
+                dict.Add("size", pagesize.AsNumber());
             }
             Console.WriteLine();
             using (HttpClient client = new HttpClient())
@@ -104,7 +104,7 @@ namespace ServiceCall
 
     public static class StringExpansions
     {
-        public static int asNumber(this string s)
+        public static int AsNumber(this string s)
         {
             return int.Parse(s);
         }
