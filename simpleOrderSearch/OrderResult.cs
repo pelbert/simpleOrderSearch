@@ -12,7 +12,7 @@ namespace simpleOrderSearch
             set;
         }
 
-        public int count
+        public int Count
         {
             get { return Results.Count(); }
         }
