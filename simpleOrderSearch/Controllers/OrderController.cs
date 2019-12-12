@@ -23,7 +23,6 @@ namespace simpleOrderSearch.Controllers
             if(request.ContainsKey("OrderID"))
             {
                 var id = request["OrderID"].GetInt64();
-                //DateTime date = DateTime.Parse(request["CompletionDte"].ToString());
                 DateTime date = request["CompletionDte"].GetDateTime();
                 var page = (request.ContainsKey("page")) ? Math.Max(request["page"].GetInt32(), 0) : 0;
                 var take = (request.ContainsKey("size")) ? Math.Max(request["size"].GetInt32(), 0) : 0;
