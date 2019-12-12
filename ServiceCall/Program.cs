@@ -58,7 +58,7 @@ namespace ServiceCall
             Console.WriteLine();
             string pagenumber = validateData(() =>
             {
-                Console.Write("What is the page number to start at (leave blank to start at the beginning)?  ");
+                Console.Write("What is the page number to start at (leave blank to start at the beginning, page numbers start at 0)?  ");
                 return Console.ReadLine();
             }, "[0-9]", true);
             if(!String.IsNullOrEmpty(pagenumber))
@@ -68,7 +68,7 @@ namespace ServiceCall
             Console.WriteLine();
             string pagesize = validateData(() =>
             {
-                Console.Write("What is the page size to start at (leave blank for all results or a default of 25 will be used if a page number was specified)?  ");
+                Console.Write("What is the page size to start at (leave blank for all results or a default size of 25 will be used if a page number was specified and page size was left blank)?  ");
                 return Console.ReadLine();
             }, "[0-9]", true);
             if (!String.IsNullOrEmpty(pagesize))
