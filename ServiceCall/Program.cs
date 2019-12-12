@@ -45,14 +45,14 @@ namespace ServiceCall
                 }, "[0-9]").AsNumber());
             }
             Console.WriteLine();
-            string date = validateData(() => {
+            string date = validateDate(() => validateData(() => {
                 Console.WriteLine("For the completion date, first give the year (in \"yyyy-mm-dd\" format): ");
                 return Console.ReadLine();
-            }, @"\d{4}\-\d{2}\-\d{2}");
-            string time = validateData(() => {
+            }, @"\d{4}\-\d{2}\-\d{2}"));
+            string time = validateTime(() => validateData(() => {
                 Console.WriteLine("then the time (in \"hh:mm:ss\" format): ");
                 return Console.ReadLine();
-            }, @"[0-6]{2}\:[0-6]{2}\:[0-6]{2}");
+            }, @"[0-9]{2}\:[0-9]{2}\:[0-9]{2}"));
             //dict.Add("CompletionDte", "2018-01-12T05:10:00");
             dict.Add("CompletionDte", $"{date}T{time}");
             Console.WriteLine();
@@ -98,6 +98,56 @@ namespace ServiceCall
                 validate = func();
             }
             while ((allowBlanks && !String.IsNullOrEmpty(validate)) && (!System.Text.RegularExpressions.Regex.IsMatch(validate, regex)));
+            return validate;
+        }
+
+        private static string validateDate(Func<string> func)
+        {
+            string validate;
+            //now we check hour, minute, and second values to see if they are kosher
+            //here, we will only care about 24 hour time
+            bool verified = false;
+            do
+            {
+                validate = func();
+                string[] timesplits = validate.Split('-');
+                //we don't care about year because those keep going on and on, but month and day are important
+                int month = int.Parse(timesplits[1]);
+                int day = int.Parse(timesplits[2]);
+                bool leap = (int.Parse(timesplits[0]) % 4) == 0;
+                //leap years are tricky
+                if(month == 2 && day > 0 && ((leap && day < 30) || day < 29))
+                {
+                    verified = true;
+                }
+                else if((month == 4 || month == 6 || month == 9 || month == 11) && day > 0 && day < 31)
+                {
+                    verified = true;
+                }
+                else if((month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) && day > 0 && day < 32)
+                {
+                    verified = true;
+                }
+            }
+            while (!verified);
+            return validate;
+        }
+
+        private static string validateTime(Func<string> func)
+        {
+            string validate;
+            //now we check hour, minute, and second values to see if they are kosher
+            //here, we will only care about 24 hour time
+            bool verified = false;
+            do
+            {
+                validate = func();
+                string[] timesplits = validate.Split(':');
+                if(int.Parse(timesplits[0]) < 24 && int.Parse(timesplits[1]) < 60 && int.Parse(timesplits[2]) < 60) {
+                    verified = true;
+                }
+            }
+            while (!verified);
             return validate;
         }
     }
