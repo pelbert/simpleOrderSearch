@@ -1,0 +1,114 @@
+[Main Menu]
+'o' to search by OrderID
+'m' to search by {MSA, Status, CompletionDte}
+'q' to quit
+your choice: o
+
+[Searching By OrderID]
+enter OrderID: asdf
+invalid OrderID, returning to previous menu
+
+[Main Menu]
+'o' to search by OrderID
+'m' to search by {MSA, Status, CompletionDte}
+'q' to quit
+your choice: o
+
+[Searching By OrderID]
+enter OrderID: 40
+success!
+[
+  {
+    "orderID": 40,
+    "shipperID": 4,
+    "driverID": 35,
+    "completionDte": "2018-01-31T05:10:00",
+    "status": 10,
+    "code": "R4C9999F",
+    "msa": 1,
+    "duration": 111.0,
+    "offerType": 1
+  }
+]
+
+[Main Menu]
+'o' to search by OrderID
+'m' to search by {MSA, Status, CompletionDte}
+'q' to quit
+your choice: m
+
+[Searching By {MSA, Status, CompleteDte}]
+enter MSA: 1
+enter Status: 10
+enter CompletionDte: 2018-01-31T05:10:00
+success!
+[
+  {
+    "orderID": 40,
+    "shipperID": 4,
+    "driverID": 35,
+    "completionDte": "2018-01-31T05:10:00",
+    "status": 10,
+    "code": "R4C9999F",
+    "msa": 1,
+    "duration": 111.0,
+    "offerType": 1
+  },
+  {
+    "orderID": 41,
+    "shipperID": 67,
+    "driverID": 35,
+    "completionDte": "2018-01-31T05:10:00",
+    "status": 10,
+    "code": "R4C87S32",
+    "msa": 1,
+    "duration": 54.0,
+    "offerType": 1
+  },
+  {
+    "orderID": 42,
+    "shipperID": 4,
+    "driverID": 35,
+    "completionDte": "2018-01-31T05:10:00",
+    "status": 10,
+    "code": "R4C87123",
+    "msa": 1,
+    "duration": 92.0,
+    "offerType": 1
+  }
+]
+want next page (y/n)? y
+success!
+[
+  {
+    "orderID": 43,
+    "shipperID": 4,
+    "driverID": 35,
+    "completionDte": "2018-01-31T05:10:00",
+    "status": 10,
+    "code": "R42G77FF",
+    "msa": 1,
+    "duration": 40.0,
+    "offerType": 1
+  },
+  {
+    "orderID": 44,
+    "shipperID": 4,
+    "driverID": 35,
+    "completionDte": "2018-01-31T05:10:00",
+    "status": 10,
+    "code": "R4002WFF",
+    "msa": 1,
+    "duration": 92.0,
+    "offerType": 2
+  }
+]
+want next page (y/n)? y
+success!
+[]
+
+[Main Menu]
+'o' to search by OrderID
+'m' to search by {MSA, Status, CompletionDte}
+'q' to quit
+your choice: q
