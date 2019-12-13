@@ -4,10 +4,10 @@ The concepts seemed somewhat familiar/easy, like how routes work.  Fair amount o
 
 Also, the specification requiring an OrderID AND a CompletionDte seemed so
 wrong that I implemented things as if valid search criteria are:
-    1: OrderID, or...
+    1: OrderID, or...  
     2: MSA and Status and CompletionDte
 
-I would change things the moment I becOme convinced that always requiring the
+I would change things the moment I become convinced that always requiring the
 CompletionDte is a good/necessary thing.
 
 To run my stuff, open each solution in Visual Studio 2019 and start debugging.
