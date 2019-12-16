@@ -1,17 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.572
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29020.237
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleOrderSearch.Service", "SimpleOrderSearch\SimpleOrderSearch.Service.csproj", "{439B4E29-5435-401B-BB52-9DD39C3FE0D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleOrderSearch.Console", "SimpleOrderSearch.Console\SimpleOrderSearch.Console.csproj", "{300CA95E-9E14-4BFC-B5AC-A21E38AB50EF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleOrderSearch.Tests", "SimpleOrderSearch.Tests\SimpleOrderSearch.Tests.csproj", "{641D0232-B4F6-416A-9A4B-B5D32B3FB08E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleOrderSearch.Tests", "SimpleOrderSearch.Tests\SimpleOrderSearch.Tests.csproj", "{641D0232-B4F6-416A-9A4B-B5D32B3FB08E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleOrderSearch.Desktop", "SimpleOrderSearch.Desktop\SimpleOrderSearch.Desktop.csproj", "{0B79DF84-F3E1-49B0-ADE4-70BC0A8E22A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleOrderSearch.Model", "SimpleOrderSearch.ModelStandard\SimpleOrderSearch.Model.csproj", "{F127E637-335E-4D3A-82A7-33451706382F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleOrderSearch.Model", "SimpleOrderSearch.ModelStandard\SimpleOrderSearch.Model.csproj", "{F127E637-335E-4D3A-82A7-33451706382F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +21,6 @@ Global
 		{439B4E29-5435-401B-BB52-9DD39C3FE0D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{439B4E29-5435-401B-BB52-9DD39C3FE0D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{439B4E29-5435-401B-BB52-9DD39C3FE0D9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{300CA95E-9E14-4BFC-B5AC-A21E38AB50EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{300CA95E-9E14-4BFC-B5AC-A21E38AB50EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{300CA95E-9E14-4BFC-B5AC-A21E38AB50EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{300CA95E-9E14-4BFC-B5AC-A21E38AB50EF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{641D0232-B4F6-416A-9A4B-B5D32B3FB08E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{641D0232-B4F6-416A-9A4B-B5D32B3FB08E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{641D0232-B4F6-416A-9A4B-B5D32B3FB08E}.Release|Any CPU.ActiveCfg = Release|Any CPU
