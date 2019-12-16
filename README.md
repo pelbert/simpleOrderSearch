@@ -3,11 +3,11 @@ simpleOrderSearch
 
 Solution Built Using:
 
-.NET Core 2.2
-.NET Standard 
-Visual Studio 2019 
-WPF 
-RX.NET
+.NET Core 2.2 |
+.NET Standard 2.0 |
+Visual Studio 2019 |
+WPF |
+RX.NET 
 
 
 Instructions:
