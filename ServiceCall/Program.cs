@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using System.Text.RegularExpressions;
 
 namespace ServiceCall
 {
@@ -48,7 +49,7 @@ namespace ServiceCall
             string date = validateDate(() => validateData(() => {
                 Console.WriteLine("For the completion date, first give the year (in \"yyyy-mm-dd\" format): ");
                 return Console.ReadLine();
-            }, @"\d{4}\-\d{2}\-\d{2}"));
+            }, @"[0-9]{4}\-[0-9]{2}\-[0-9]{2}"));
             string time = validateTime(() => validateData(() => {
                 Console.WriteLine("then the time (in \"hh:mm:ss\" format): ");
                 return Console.ReadLine();
@@ -97,7 +98,7 @@ namespace ServiceCall
             {
                 validate = func();
             }
-            while ((allowBlanks && !String.IsNullOrEmpty(validate)) && (!System.Text.RegularExpressions.Regex.IsMatch(validate, regex)));
+            while (allowBlanks ? ((!String.IsNullOrEmpty(validate)) && (!Regex.IsMatch(validate, regex))) : (!Regex.IsMatch(validate, regex)));
             return validate;
         }
 

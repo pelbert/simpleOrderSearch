@@ -25,3 +25,8 @@ The application calling the service can be a console app. You have total freedom
 • Write the outputs of the service call to a console window. 
 
 Create a pull request once you have it working. I will clone your repository, verify that it works, and evaluate it. Please ensure you include any instructions for running that may be required. 
+
+
+Instructions: If you have visual studio, there is a debug/run configuration that will start the service and launch the client program. It is
+called "Client and Service". Once you have it set, you can go to "Run" -> "Start Without Debugging", and the web service will start and the
+client program will launch.
