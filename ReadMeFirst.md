@@ -1,4 +1,4 @@
-#Instructions
+# Instructions
 
 - Open Visual Studio or any other IDE
 - Open the solution `tuya.sln`
