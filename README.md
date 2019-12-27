@@ -1,3 +1,16 @@
+--Faraz start of comments
+This has 2 programs
+1. Webapi application OrderSearch
+2. Console application TestOrderSearch
+
+Instructions:
+Please host the service OrderSearch on local web server
+In TestOrderSearch, update the below parameter in App.config ot reflect the right port number
+  <appSettings>
+    <add key ="SearchURL" value="http://localhost:64628/api/OrderSearch?"/>
+  </appSettings>
+
+--Faraz End of comments---------
 # simpleOrderSearch
 simpleOrderSearch
 
