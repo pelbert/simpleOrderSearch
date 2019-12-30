@@ -8,6 +8,8 @@ namespace SimpleOrderSearch.Model
     {
         public IEnumerable<OrderInfo> Orders { get; set; }
 
+        public ErrorResponse ErrorResponse { get; set; }
+
         public int PageNumber { get; set; } = 1;
 
         public int PageLimit { get; set; } = 5;
@@ -15,7 +17,10 @@ namespace SimpleOrderSearch.Model
         public int Offset { get; set; } = 0;
 
         public bool IsStart { get; set; }
+
         public bool IsEnd { get; set; }
+
+        public bool IsValid { get; set; } = true;
     }
 }
 

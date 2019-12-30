@@ -10,7 +10,7 @@ namespace SimpleOrderSearch.Model
         public static Nullable<T> ToNullableValue<T>(this string input) where T : struct
         {
             if (string.IsNullOrEmpty(input))
-                return default(T);
+                return null;
 
             Nullable<T> result = new Nullable<T>();
             try
