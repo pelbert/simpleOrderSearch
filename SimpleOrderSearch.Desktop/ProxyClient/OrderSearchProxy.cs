@@ -23,6 +23,18 @@ namespace SimpleOrderSearch.Desktop.ProxyClient
             request.AddParameter("CompletionDate", searchQuery.CompletionDate);
             request.AddParameter("PageLimit", searchQuery.PageLimit);
             IRestResponse response = client.Execute(request);
+
+            RestSharp.Serialization.Json.JsonDeserializer jsonDeserializer = new RestSharp.Serialization.Json.JsonDeserializer();
+            var pagedOrderInfo = jsonDeserializer.Deserialize<PagedOrderInfo>(response);
+            return pagedOrderInfo;
+        }
+
+        public static PagedOrderInfo PostOrdersQuery(OrderSearchQuery searchQuery)
+        {
+            var client = new RestClient(uri);
+            var request = new RestRequest(Method.POST);
+            request.AddJsonBody(searchQuery);
+            IRestResponse response = client.ExecuteAsPost(request, Method.POST.ToString());
             RestSharp.Serialization.Json.JsonDeserializer jsonDeserializer = new RestSharp.Serialization.Json.JsonDeserializer();
             var orders = jsonDeserializer.Deserialize<PagedOrderInfo>(response);
             return orders;

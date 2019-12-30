@@ -38,17 +38,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DynamicData, Version=6.13.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DynamicData.6.13.21\lib\net461\DynamicData.dll</HintPath>
+    <Reference Include="DynamicData, Version=6.14.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DynamicData.6.14.1\lib\net461\DynamicData.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.8.6.0\lib\net45\FluentValidation.dll</HintPath>
     </Reference>
     <Reference Include="MaterialDesignThemes.Wpf, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignThemes.3.0.0\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
-    <Reference Include="ReactiveUI, Version=10.5.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ReactiveUI.10.5.43\lib\net461\ReactiveUI.dll</HintPath>
+    <Reference Include="ReactiveUI, Version=11.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ReactiveUI.11.0.1\lib\net461\ReactiveUI.dll</HintPath>
     </Reference>
     <Reference Include="ReactiveUI.Fody.Helpers, Version=10.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ReactiveUI.Fody.10.5.43\lib\net461\ReactiveUI.Fody.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="ReactiveUI.Validation, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ReactiveUI.Validation.1.4.6\lib\net461\ReactiveUI.Validation.dll</HintPath>
     </Reference>
     <Reference Include="ReactiveUI.WPF, Version=10.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ReactiveUI.WPF.10.5.43\lib\net461\ReactiveUI.WPF.dll</HintPath>
@@ -63,6 +69,10 @@
       <HintPath>..\packages\Splat.Drawing.9.2.11\lib\net461\Splat.Drawing.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.4.1\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Drawing.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">

@@ -12,11 +12,16 @@ using SimpleOrderSearch.Model;
 using System.Reactive;
 using SimpleOrderSearch.Desktop.ProxyClient;
 using DynamicData;
+using ReactiveUI.Validation.Abstractions;
+using ReactiveUI.Validation.Contexts;
+using ReactiveUI.Validation.Extensions;
 
 namespace SimpleOrderSearch.Desktop
 {
-    public class MainViewModel : ReactiveObject
+    public class MainViewModel : ReactiveObject, IValidatableViewModel
     {
+        public ValidationContext OrderParametersRule { get; private set; }
+
         [Reactive] public string OrderNo { get; set; }
         [Reactive] public string MSA { get; set; }
         [Reactive] public string Status { get; set; }
@@ -24,7 +29,7 @@ namespace SimpleOrderSearch.Desktop
 
         [Reactive] public int PageSize { get; set; } = 5;
         [Reactive] public int PageNo { get; set; } = 1;
-        [Reactive] public bool HasValidCriteria { get; set; }
+        [Reactive] public bool HasValidCriteria { get; set; } = true;
         [Reactive] public bool CanPageUp { get; set; }
         [Reactive] public bool CanPageDown { get; set; }
         [Reactive] public string ErrorMsg { get; set; }
@@ -37,6 +42,8 @@ namespace SimpleOrderSearch.Desktop
         public ReactiveCommand<Unit, Unit> RxSearchCommad => _rxSearchCommand;
         public ReactiveCommand<Unit, Unit> RxCommandPageUp => _rxCommandPageUp;
         public ReactiveCommand<Unit, Unit> RxCommandPageDown => _rxCommandPageDown;
+
+        public ValidationContext ValidationContext => new ValidationContext();
 
         public MainViewModel()
         {
@@ -79,9 +86,16 @@ namespace SimpleOrderSearch.Desktop
             this.CanPageUp = orderResults.IsEnd;
 
             Orders.Clear();
-            foreach (var result in orderResults.Orders)
+            if (orderResults.IsValid)
             {
-                Orders.Add(result);
+                foreach (var result in orderResults?.Orders)
+                {
+                    Orders.Add(result);
+                }
+            }
+            else if (orderResults.ErrorResponse != null && orderResults.ErrorResponse.Errors.Any())
+            {
+                ErrorMsg = string.Join("|", orderResults.ErrorResponse.Errors.Select(p => p.Message));
             }
         }
 
