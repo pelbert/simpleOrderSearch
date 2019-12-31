@@ -16,6 +16,9 @@ using FluentValidation.AspNetCore;
 using FluentValidation;
 using SimpleOrderSearch.Service.Validators;
 using SimpleOrderSearch.Service.Filters;
+using Swashbuckle.AspNetCore.Swagger;
+using System.Reflection;
+using System.IO;
 
 namespace SimpleOrderSearch
 {
@@ -38,11 +41,20 @@ namespace SimpleOrderSearch
                     .AddFluentValidation(mvcconfig => mvcconfig.RegisterValidatorsFromAssemblyContaining<Startup>())
                     .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+            services.AddSwaggerGen(x => 
+            {
+                x.SwaggerDoc("v1", new Info() { Title = "", Version = "v1" });
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                x.IncludeXmlComments(xmlPath);
+            });
+
             services.AddSingleton<IDataAccessor<OrderInfo>, JsonDataAccessor>();
             services.AddSingleton<AbstractValidator<OrderSearchQuery>, OrderSearchQueryValidator>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        // middlewares
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
@@ -55,8 +67,31 @@ namespace SimpleOrderSearch
                 app.UseHsts();
             }
 
+
             app.UseHttpsRedirection();
             app.UseMvc();
+            var swaggerOptions = new SwaggerOptions();
+            Configuration.GetSection(nameof(SwaggerOptions)).Bind(swaggerOptions); // gets section from json settings file.
+            //app.UseSwagger(option =>
+            //{
+            //    //option.RouteTemplate = ""
+            //});
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Search Orders API");
+                //c.RoutePrefix = string.Empty;
+            });
+
+
+
+        }
+
+        private string GetXmlCommentsPath()
+        {
+            var app = System.AppContext.BaseDirectory;
+            return System.IO.Path.Combine(app, "ASPNETCoreSwaggerDemo.xml");
         }
     }
 }

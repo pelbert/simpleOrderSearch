@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SimpleOrderSearch.Service</name>
+    </assembly>
+    <members>
+        <member name="T:SimpleOrderSearch.Service.Contracts.IDataAccessor`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:SimpleOrderSearch.Service.Contracts.IDataAccessor`1.GetById(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SimpleOrderSearch.Service.Contracts.IDataAccessor`1.GetAll">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SimpleOrderSearch.Service.Contracts.IDataAccessor`1.GetAllRequested(System.Func{`0,System.Boolean})">
+            <summary>
+            
+            </summary>
+            <param name="predicate"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SimpleOrderSearch.Service.Controllers.OrderSearchController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SimpleOrderSearch.Service.Controllers.OrderSearchController.#ctor(SimpleOrderSearch.Service.Contracts.IDataAccessor{SimpleOrderSearch.Model.OrderInfo},FluentValidation.AbstractValidator{SimpleOrderSearch.Model.OrderSearchQuery})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="dataAccessor"></param>
+            <param name="queryValidator"></param>
+        </member>
+        <member name="M:SimpleOrderSearch.Service.Controllers.OrderSearchController.Get(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.DateTime},System.Int32,System.Int32)">
+            <summary>
+            Gets searched orders results by criteria. Results are returned paged.
+            </summary>
+            <param name="orderNo"></param>
+            <param name="status"></param>
+            <param name="msa"></param>
+            <param name="completionDate">Always required</param>
+            <param name="page"></param>
+            <param name="pageLimit"></param>
+            <returns>PagedOrderInfo</returns>
+        </member>
+    </members>
+</doc>
