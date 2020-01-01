@@ -32,7 +32,7 @@
         </member>
         <member name="T:SimpleOrderSearch.Service.Controllers.OrderSearchController">
             <summary>
-            
+            Order Search COntroller
             </summary>
         </member>
         <member name="M:SimpleOrderSearch.Service.Controllers.OrderSearchController.#ctor(SimpleOrderSearch.Service.Contracts.IDataAccessor{SimpleOrderSearch.Model.OrderInfo},FluentValidation.AbstractValidator{SimpleOrderSearch.Model.OrderSearchQuery})">
@@ -46,12 +46,12 @@
             <summary>
             Gets searched orders results by criteria. Results are returned paged.
             </summary>
-            <param name="orderNo"></param>
-            <param name="status"></param>
-            <param name="msa"></param>
+            <param name="orderNo">Not required but must be greater than zero (0) if specified.</param>
+            <param name="status">Not required. If specified must be in combination with msa.</param>
+            <param name="msa">Not required. If specified must be in combination with status.</param>
             <param name="completionDate">Always required</param>
-            <param name="page"></param>
-            <param name="pageLimit"></param>
+            <param name="page">Indicates number page to be retrived.</param>
+            <param name="pageLimit">Indicates max number of results to be returned per page.</param>
             <returns>PagedOrderInfo</returns>
         </member>
     </members>

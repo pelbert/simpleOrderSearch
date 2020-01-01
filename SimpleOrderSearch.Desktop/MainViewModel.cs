@@ -15,12 +15,18 @@ using DynamicData;
 using ReactiveUI.Validation.Abstractions;
 using ReactiveUI.Validation.Contexts;
 using ReactiveUI.Validation.Extensions;
+using ReactiveUI.Validation.Helpers;
 
 namespace SimpleOrderSearch.Desktop
 {
-    public class MainViewModel : ReactiveObject, IValidatableViewModel
+    public class MainViewModel : ReactiveValidationObject<MainViewModel>
     {
         public ValidationContext OrderParametersRule { get; private set; }
+
+        public ValidationHelper CompletionDateRule { get; private set; }
+        public ValidationHelper OrderNumberRule { get; private set; }
+        public ValidationHelper StatusRule { get; private set; }
+        public ValidationHelper MSARule { get; private set; }
 
         [Reactive] public string OrderNo { get; set; }
         [Reactive] public string MSA { get; set; }
@@ -43,8 +49,6 @@ namespace SimpleOrderSearch.Desktop
         public ReactiveCommand<Unit, Unit> RxCommandPageUp => _rxCommandPageUp;
         public ReactiveCommand<Unit, Unit> RxCommandPageDown => _rxCommandPageDown;
 
-        public ValidationContext ValidationContext => new ValidationContext();
-
         public MainViewModel()
         {
             this.WhenAnyValue(x => x.MSA, x => x.Status, x => x.OrderNo, x => x.CompletionDate).Do(OnNextParamter).Subscribe();
@@ -55,6 +59,31 @@ namespace SimpleOrderSearch.Desktop
             _rxSearchCommand = ReactiveCommand.Create(() => OnSearch(), canSearch);
             _rxCommandPageUp = ReactiveCommand.Create(() => OnPageUp(), canPageUp);
             _rxCommandPageDown = ReactiveCommand.Create(() => OnPageDown(), canPageDown);
+
+            ////OrderNumberRule = this.ValidationRule(vm => vm.OrderNo,
+            ////                                      orderid => 
+            ////                                      {
+            ////                                          var val = NumericValidation(orderid);
+            ////                                          return val.isValid && val.parsedValue > 0 && !NumericValidation(this.MSA).isValid && !NumericValidation(this.Status).isValid;
+            ////                                      } ,
+            ////                                      orderid => $"Order Number { (string.IsNullOrWhiteSpace(orderid) ? null : orderid) } Is Invalid.");
+
+            ////MSARule = this.ValidationRule(vm => vm.MSA,
+            ////                          orderid =>
+            ////                          {
+            ////                              var val = NumericValidation(orderid);
+            ////                              return val.isValid && val.parsedValue > 0 && !NumericValidation(this.MSA).isValid && !NumericValidation(this.Status).isValid;
+            ////                          },
+            ////                          orderid => $"Order Number { (string.IsNullOrWhiteSpace(orderid) ? null : orderid) } Is Invalid.");
+
+            ////StatusRule = this.ValidationRule(vm => vm.Status,
+            ////                          orderid =>
+            ////                          {
+            ////                              var val = NumericValidation(orderid);
+            ////                              return val.isValid && val.parsedValue > 0 && !NumericValidation(this.MSA).isValid && !NumericValidation(this.Status).isValid;
+            ////                          },
+            ////                          orderid => $"Order Number { (string.IsNullOrWhiteSpace(orderid) ? null : orderid) } Is Invalid.");
+
         }
 
         private void OnPageDown()
@@ -126,7 +155,7 @@ namespace SimpleOrderSearch.Desktop
         private (object orgValue, int parsedValue, bool isValid) NumericValidation(object o)
         {
             int parsedValue;
-            bool isValid = int.TryParse(o == null ? "" : o.ToString(), out parsedValue);
+            bool isValid = int.TryParse(o == null ? string.Empty : o.ToString(), out parsedValue);
             return (o, parsedValue, isValid);
         }
     }

@@ -13,7 +13,7 @@ using RouteAttribute = Microsoft.AspNetCore.Mvc.RouteAttribute;
 namespace SimpleOrderSearch.Service.Controllers
 {
     /// <summary>
-    /// 
+    /// Order Search COntroller
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
