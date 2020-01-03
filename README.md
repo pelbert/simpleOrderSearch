@@ -7,7 +7,8 @@ Solution Built Using:
 .NET Standard 2.0 |
 Visual Studio 2019 |
 WPF |
-RX.NET 
+RX.NET |
+GraphQL
 
 
 Instructions:
