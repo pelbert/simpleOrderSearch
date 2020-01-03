@@ -19,6 +19,7 @@ using SimpleOrderSearch.Service.Filters;
 using Swashbuckle.AspNetCore.Swagger;
 using System.Reflection;
 using System.IO;
+using GraphiQl;
 
 namespace SimpleOrderSearch
 {
@@ -34,6 +35,7 @@ namespace SimpleOrderSearch
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
             services.AddMvc(setupAction: options => 
                             {
                                 options.Filters.Add<ValidationFilter>();
@@ -69,6 +71,7 @@ namespace SimpleOrderSearch
 
 
             app.UseHttpsRedirection();
+            app.UseGraphiQl("/graphql");
             app.UseMvc();
             var swaggerOptions = new SwaggerOptions();
             Configuration.GetSection(nameof(SwaggerOptions)).Bind(swaggerOptions); // gets section from json settings file.

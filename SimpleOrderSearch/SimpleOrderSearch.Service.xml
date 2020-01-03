@@ -30,6 +30,17 @@
             <param name="predicate"></param>
             <returns></returns>
         </member>
+        <member name="T:SimpleOrderSearch.Service.Controllers.GraphQLController">
+            <summary>
+            GraphQLController
+            </summary>
+        </member>
+        <member name="M:SimpleOrderSearch.Service.Controllers.GraphQLController.#ctor(SimpleOrderSearch.Service.Contracts.IDataAccessor{SimpleOrderSearch.Model.OrderInfo})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="dataAccessor"></param>
+        </member>
         <member name="T:SimpleOrderSearch.Service.Controllers.OrderSearchController">
             <summary>
             Order Search COntroller
@@ -53,6 +64,27 @@
             <param name="page">Indicates number page to be retrived.</param>
             <param name="pageLimit">Indicates max number of results to be returned per page.</param>
             <returns>PagedOrderInfo</returns>
+        </member>
+        <member name="T:SimpleOrderSearch.Service.GraphQL.Query.OrderGraphQLQuery">
+            <summary>
+            encapsulates querying for an order using graphql.
+            </summary>
+        </member>
+        <member name="M:SimpleOrderSearch.Service.GraphQL.Query.OrderGraphQLQuery.#ctor(SimpleOrderSearch.Service.Contracts.IDataAccessor{SimpleOrderSearch.Model.OrderInfo})">
+            <summary>
+            constructor
+            </summary>
+            <param name="dataAccessor"></param>
+        </member>
+        <member name="T:SimpleOrderSearch.Service.GraphQL.Types.OrderType">
+            <summary>
+            GraphQl Order Type
+            </summary>
+        </member>
+        <member name="M:SimpleOrderSearch.Service.GraphQL.Types.OrderType.#ctor">
+            <summary>
+            GraphQl OrderType over OrderInfo object.
+            </summary>
         </member>
     </members>
 </doc>
