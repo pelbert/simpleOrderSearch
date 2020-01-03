@@ -98,7 +98,7 @@ namespace SimpleOrderSearch.Desktop
             OnSearch();
         }
 
-        private void OnSearch()
+        private async void OnSearch()
         {
             OrderSearchQuery query = new OrderSearchQuery()
             {
@@ -110,22 +110,28 @@ namespace SimpleOrderSearch.Desktop
                 Status = Status.ToNullableValue<int>()
             };
 
-            var orderResults = OrderSearchProxy.GetOrders(query);
-            this.CanPageDown = orderResults.IsStart;
-            this.CanPageUp = orderResults.IsEnd;
-
+            ////var orderResults = OrderSearchProxy.GetOrders(query);
+            var graphQlQryResults = await OrderSearchProxy.PostOrderGraphQLQuery(query);
+            //this.CanPageDown = orderResults.IsStart;
+            //this.CanPageUp = orderResults.IsEnd;
             Orders.Clear();
-            if (orderResults.IsValid)
+
+            if (graphQlQryResults != null)
             {
-                foreach (var result in orderResults?.Orders)
-                {
-                    Orders.Add(result);
-                }
+                graphQlQryResults.ForEach((order) => { Orders.Add(order); });
             }
-            else if (orderResults.ErrorResponse != null && orderResults.ErrorResponse.Errors.Any())
-            {
-                ErrorMsg = string.Join("|", orderResults.ErrorResponse.Errors.Select(p => p.Message));
-            }
+
+            ////if (orderResults.IsValid)
+            ////{
+            ////    foreach (var result in orderResults?.Orders)
+            ////    {
+            ////        Orders.Add(result);
+            ////    }
+            ////}
+            ////else if (orderResults.ErrorResponse != null && orderResults.ErrorResponse.Errors.Any())
+            ////{
+            ////    ErrorMsg = string.Join("|", orderResults.ErrorResponse.Errors.Select(p => p.Message));
+            ////}
         }
 
         private void OnNextParamter((string msa, string status, string orderno, DateTime? completionDate) obj)

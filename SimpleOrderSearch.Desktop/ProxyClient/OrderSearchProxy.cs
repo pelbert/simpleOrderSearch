@@ -1,17 +1,18 @@
-﻿using SimpleOrderSearch.Model;
+﻿using GraphQL.Client;
+using GraphQL.Common.Request;
+using RestSharp;
+using SimpleOrderSearch.Model;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using RestSharp;
 
 namespace SimpleOrderSearch.Desktop.ProxyClient
 {
-    public static class OrderSearchProxy
+    public class OrderSearchProxy
     {
-        const string uri = "https://localhost:44345/api/ordersearch";
-        
+        private const string uri = "https://localhost:44345/api/ordersearch";
+        private const string graphQluri = "https://localhost:44345/graphql";
+
         public static PagedOrderInfo GetOrders(OrderSearchQuery searchQuery)
         {
             var client = new RestClient(uri);
@@ -38,6 +39,32 @@ namespace SimpleOrderSearch.Desktop.ProxyClient
             RestSharp.Serialization.Json.JsonDeserializer jsonDeserializer = new RestSharp.Serialization.Json.JsonDeserializer();
             var orders = jsonDeserializer.Deserialize<PagedOrderInfo>(response);
             return orders;
+        }
+
+
+        public static async Task<List<OrderInfo>> PostOrderGraphQLQuery(OrderSearchQuery searchQuery)
+        {
+            var graphQlClient = new GraphQLClient(new Uri(graphQluri));
+            var request = new GraphQLRequest
+            {
+                OperationName = "OrderQuery",
+                Query = @"query OrderQuery($orderId: Int!, $msa: Int, $status: Int, $completionDate: Date) {
+                          orders(orderId: $orderId, msa: $msa, status: $status, completionDate: $completionDate) {
+                            orderID
+                            mSA
+                            status
+                            completionDte
+                            offerType
+                            driverID
+                            duration
+                            code
+                          }
+                        }",
+                Variables = new { orderId = searchQuery.OrderNumber.Value, msa = searchQuery.MSA, status = searchQuery.Status, completionDate = searchQuery.CompletionDate }        
+            };
+
+            var response = await graphQlClient.PostAsync(request);
+            return response.GetDataFieldAs<List<OrderInfo>>("orders");
         }
     }
 }
