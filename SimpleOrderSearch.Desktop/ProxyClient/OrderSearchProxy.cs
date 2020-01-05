@@ -42,29 +42,70 @@ namespace SimpleOrderSearch.Desktop.ProxyClient
         }
 
 
-        public static async Task<List<OrderInfo>> PostOrderGraphQLQuery(OrderSearchQuery searchQuery)
+        //public static async Task<List<OrderInfo>> PostOrderGraphQLQuery(OrderSearchQuery searchQuery)
+        public static async Task<GraphQLResponse<OrderInfo>> PostOrderGraphQLQuery(OrderSearchQuery searchQuery)
         {
             var graphQlClient = new GraphQLClient(new Uri(graphQluri));
             var request = new GraphQLRequest
             {
+                //OperationName = "OrderQuery",
+                //Query = @"query OrderQuery($orderId: Int!, $msa: Int, $status: Int, $completionDate: Date) {
+                //          orders(orderId: $orderId, msa: $msa, status: $status, completionDate: $completionDate) {
+                //            orderID
+                //            mSA
+                //            status
+                //            completionDte
+                //            offerType
+                //            driverID
+                //            duration
+                //            code
+                //          }
+                //        }",
+
                 OperationName = "OrderQuery",
-                Query = @"query OrderQuery($orderId: Int!, $msa: Int, $status: Int, $completionDate: Date) {
-                          orders(orderId: $orderId, msa: $msa, status: $status, completionDate: $completionDate) {
-                            orderID
-                            mSA
-                            status
-                            completionDte
-                            offerType
-                            driverID
-                            duration
-                            code
-                          }
-                        }",
-                Variables = new { orderId = searchQuery.OrderNumber.Value, msa = searchQuery.MSA, status = searchQuery.Status, completionDate = searchQuery.CompletionDate }        
+                Query = @"query OrderQuery($orderId: ID!, $msa: Int, $status: Int, $completionDate: Date, $first: Int, $after: String) {
+                        ordersConnection(orderId: $orderId, msa: $msa, status: $status, completionDate: $completionDate, first:$first, after:$after, pageSize: 1) {
+                    totalCount
+                    edges {
+                                    node {
+                                    code
+                        completionDte
+                        driverID
+                        duration
+                        mSA
+                        offerType
+                        orderID
+                        shipperID
+                        status
+                                }
+                     cursor
+                            }
+                    pageInfo{
+                                startCursor
+                               endCursor
+                      hasNextPage
+                      hasPreviousPage
+
+
+                    }
+                        }
+                    }",
+
+                Variables = new
+                {
+                    orderId = searchQuery.OrderNumber.Value,
+                    msa = searchQuery.MSA,
+                    status = searchQuery.Status,
+                    completionDate = searchQuery.CompletionDate,
+                    first = searchQuery.PageLimit ,
+                    after = searchQuery.IsPageUp.HasValue && searchQuery.IsPageUp.Value ? searchQuery.Cursor : string.Empty,
+                    before = searchQuery.IsPageUp.HasValue && !searchQuery.IsPageUp.Value ? searchQuery.Cursor : string.Empty
+                }        
             };
 
             var response = await graphQlClient.PostAsync(request);
-            return response.GetDataFieldAs<List<OrderInfo>>("orders");
+            ////return response.GetDataFieldAs<List<OrderInfo>>("orders");
+            return response.GetDataFieldAs<GraphQLResponse<OrderInfo>>("ordersConnection");
         }
     }
 }

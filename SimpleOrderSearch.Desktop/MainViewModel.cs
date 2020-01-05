@@ -9,18 +9,21 @@ using ReactiveUI.Fody.Helpers;
 using DynamicData.Binding;
 using System.Collections.ObjectModel;
 using SimpleOrderSearch.Model;
-using System.Reactive;
+//using System.Reactive;
 using SimpleOrderSearch.Desktop.ProxyClient;
 using DynamicData;
 using ReactiveUI.Validation.Abstractions;
 using ReactiveUI.Validation.Contexts;
 using ReactiveUI.Validation.Extensions;
 using ReactiveUI.Validation.Helpers;
+using System.Reactive;
 
 namespace SimpleOrderSearch.Desktop
 {
     public class MainViewModel : ReactiveValidationObject<MainViewModel>
     {
+        List<string> _cursorList = new List<string>();
+
         public ValidationContext OrderParametersRule { get; private set; }
 
         public ValidationHelper CompletionDateRule { get; private set; }
@@ -40,6 +43,10 @@ namespace SimpleOrderSearch.Desktop
         [Reactive] public bool CanPageDown { get; set; }
         [Reactive] public string ErrorMsg { get; set; }
 
+        [Reactive] public PageInfo CurrentPageInfo { get; set; } = new PageInfo();
+        private string CurrentCursor { get; set; } = string.Empty;
+
+
         public ObservableCollection<OrderInfo> Orders { get; set; } = new ObservableCollection<OrderInfo>();
 
         ReactiveCommand<Unit, Unit> _rxSearchCommand;
@@ -53,10 +60,16 @@ namespace SimpleOrderSearch.Desktop
         {
             this.WhenAnyValue(x => x.MSA, x => x.Status, x => x.OrderNo, x => x.CompletionDate).Do(OnNextParamter).Subscribe();
             var canSearch = this.WhenAnyValue(x => x.HasValidCriteria);
-            var canPageUp = this.WhenAnyValue(x => x.HasValidCriteria, x => x.Orders.Count, x => x.CanPageUp, x => x.PageNo).Select(x => x.Item1 && x.Item2 > 0 && !x.Item3 && x.Item4 > 0);
-            var canPageDown = this.WhenAnyValue(x => x.HasValidCriteria, x => x.Orders.Count, x => x.CanPageDown, x => x.PageNo).Select(x => x.Item1 && x.Item2 > 0 && !x.Item3 && x.Item4 > 0);
 
-            _rxSearchCommand = ReactiveCommand.Create(() => OnSearch(), canSearch);
+            //var canPageUp = this.WhenAnyValue(x => x.HasValidCriteria, x => x.Orders.Count, x => x.CanPageUp, x => x.PageNo).Select(x => x.Item1 && x.Item2 > 0 && !x.Item3 && x.Item4 > 0);
+            //var canPageDown = this.WhenAnyValue(x => x.HasValidCriteria, x => x.Orders.Count, x => x.CanPageDown, x => x.PageNo).Select(x => x.Item1 && x.Item2 > 0 && !x.Item3 && x.Item4 > 0);
+
+            var canPageUp = this.WhenAnyValue(x => x.CurrentPageInfo).Select(x => x.HasNextPage);
+            var canPageDown = this.WhenAnyValue(x => x.CurrentPageInfo).Select(x => x.HasPreviousPage);
+
+
+
+            _rxSearchCommand = ReactiveCommand.Create(() => OnSearch(true), canSearch);
             _rxCommandPageUp = ReactiveCommand.Create(() => OnPageUp(), canPageUp);
             _rxCommandPageDown = ReactiveCommand.Create(() => OnPageDown(), canPageDown);
 
@@ -89,17 +102,27 @@ namespace SimpleOrderSearch.Desktop
         private void OnPageDown()
         {
             PageNo -= 1;
-            OnSearch();
+            OnSearch(false, false);
         }
 
         private void OnPageUp()
         {
             PageNo += 1;
-            OnSearch();
+            OnSearch(false, true);
         }
 
-        private async void OnSearch()
+        private async void OnSearch(bool isCursorReset = true, bool? isPageUp = null)
         {
+            if (isCursorReset)
+                _cursorList.Clear();
+            else
+            {
+                if (isPageUp.HasValue && isPageUp.Value == false)
+                {
+                    CurrentCursor = _cursorList[this.PageNo];
+                }
+            }
+
             OrderSearchQuery query = new OrderSearchQuery()
             {
                 CompletionDate = this.CompletionDate,
@@ -107,19 +130,45 @@ namespace SimpleOrderSearch.Desktop
                 OrderNumber = OrderNo.ToNullableValue<int>(),
                 Page = this.PageNo,
                 PageLimit = this.PageSize,
-                Status = Status.ToNullableValue<int>()
+                Status = Status.ToNullableValue<int>(),
+                Cursor = isCursorReset ? string.Empty : CurrentCursor,
+                IsPageUp = isPageUp.HasValue == false ? (bool?)null : isPageUp.HasValue && isPageUp.Value
             };
 
             ////var orderResults = OrderSearchProxy.GetOrders(query);
-            var graphQlQryResults = await OrderSearchProxy.PostOrderGraphQLQuery(query);
+            var results = await OrderSearchProxy.PostOrderGraphQLQuery(query);
+            if (results != null)
+            {
+                if (results.PageInfo != null)
+                {
+                    results.PageInfo.HasPreviousPage = this.PageNo > 1;
+
+                    CurrentPageInfo = results.PageInfo;
+
+                    string cursor = results.Edges.LastOrDefault()?.Cursor ?? string.Empty;
+
+                    CurrentCursor = cursor;
+
+                    if (isCursorReset || (isPageUp != null && !_cursorList.Contains(cursor)))
+                        _cursorList.Add(cursor);
+
+                    Orders.Clear();
+
+                    foreach (var node in results.Edges.Select(p => p.Node))
+                    {
+                        Orders.Add(node);
+                    }
+                }
+            }
+
             //this.CanPageDown = orderResults.IsStart;
             //this.CanPageUp = orderResults.IsEnd;
-            Orders.Clear();
+            //Orders.Clear();
 
-            if (graphQlQryResults != null)
-            {
-                graphQlQryResults.ForEach((order) => { Orders.Add(order); });
-            }
+            //if (graphQlQryResults != null)
+            //{
+            //    graphQlQryResults.ForEach((order) => { Orders.Add(order); });
+            //}
 
             ////if (orderResults.IsValid)
             ////{
