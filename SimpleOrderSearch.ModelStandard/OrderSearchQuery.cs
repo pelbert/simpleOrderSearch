@@ -23,5 +23,14 @@ namespace SimpleOrderSearch.Model
         public int Offset { get; set; }
 
         public int PageLimit { get; set; }
+
+        public PageInfo PageInfo { get; set; }
+
+        public string Cursor { get; set; }
+        //public string AfterCursor { get; set; }
+
+        //public string  BeforeCursor { get; set; }
+
+        public bool? IsPageUp { get; set; } = null;
     }
 }

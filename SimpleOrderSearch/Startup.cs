@@ -20,6 +20,9 @@ using Swashbuckle.AspNetCore.Swagger;
 using System.Reflection;
 using System.IO;
 using GraphiQl;
+using GraphQL.Types.Relay;
+using GraphQL.Relay.Types;
+using SimpleOrderSearch.Service.GraphQL.Types;
 
 namespace SimpleOrderSearch
 {
@@ -53,6 +56,11 @@ namespace SimpleOrderSearch
 
             services.AddSingleton<IDataAccessor<OrderInfo>, JsonDataAccessor>();
             services.AddSingleton<AbstractValidator<OrderSearchQuery>, OrderSearchQueryValidator>();
+            services.AddTransient(typeof(ConnectionType<>));
+            services.AddTransient(typeof(EdgeType<>));
+            services.AddTransient<NodeInterface>();
+            services.AddTransient<PageInfoType>();
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

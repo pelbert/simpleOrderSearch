@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using SimpleOrderSearch.Model;
 using SimpleOrderSearch.Service.Contracts;
 using SimpleOrderSearch.Service.GraphQL.Query;
+using SimpleOrderSearch.Service.GraphQL.Types;
 
 namespace SimpleOrderSearch.Service.Controllers
 {
@@ -33,9 +34,10 @@ namespace SimpleOrderSearch.Service.Controllers
             var inputs = query.Variables.ToInputs();
 
             var schema = new Schema
-            { 
-                Query = new OrderGraphQLQuery(this.dataAccessor)
+            {
+               Query = new OrderGraphQLQuery(this.dataAccessor)
             };
+            schema.RegisterType<OrderType>();
             
 
 

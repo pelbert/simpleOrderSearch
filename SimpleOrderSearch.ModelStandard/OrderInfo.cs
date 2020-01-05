@@ -21,5 +21,7 @@ namespace SimpleOrderSearch.Model
         public string Duration { get; set; }
 
         public int OfferType { get; set; }
+
+       
     }
 }

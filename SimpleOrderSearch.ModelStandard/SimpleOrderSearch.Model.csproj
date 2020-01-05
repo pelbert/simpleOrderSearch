@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="graphql" Version="2.4.0" />
+    <PackageReference Include="GraphQL.Relay" Version="0.5.0" />
   </ItemGroup>
 
 </Project>
