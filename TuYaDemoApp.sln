@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.352
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TuYaDemoApi", "TuYaDemo\TuYaDemoApi.csproj", "{0E6E966E-3C40-407A-ABCC-486B654B5E94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TuYaDataAccess", "TuYaDataAccess\TuYaDataAccess.csproj", "{E6FFECD2-8A8F-4E45-9BB0-E75AE838AE3A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0E6E966E-3C40-407A-ABCC-486B654B5E94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E6E966E-3C40-407A-ABCC-486B654B5E94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E6E966E-3C40-407A-ABCC-486B654B5E94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E6E966E-3C40-407A-ABCC-486B654B5E94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6FFECD2-8A8F-4E45-9BB0-E75AE838AE3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6FFECD2-8A8F-4E45-9BB0-E75AE838AE3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6FFECD2-8A8F-4E45-9BB0-E75AE838AE3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6FFECD2-8A8F-4E45-9BB0-E75AE838AE3A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2A641AA2-9681-4A51-940E-D346B27D748D}
+	EndGlobalSection
+EndGlobal
