@@ -1,0 +1,117 @@
+﻿@model IEnumerable<TuYaDemo.Models.ViewModels.OrderViewModel>
+
+
+
+@{
+    ViewBag.Title = "Order Report";
+}
+
+<h2>OrderReport</h2>
+
+    <small>Search for orders by selecting a date and entering the order number (Ex: "37")</small>
+    </br>
+    <small>You can also search for orders by selecting a date and entering the MSA number and the Status code with a space between (Ex: "1 10")</small>
+    </br>
+    <small>You can see all entries by entering "all"</small>
+    </br>
+
+
+<div class="container" style="margin-top:20px">
+
+    @using (Html.BeginForm("Index", "OrderReports", FormMethod.Get))
+    {
+        <div class="col-lg-4">
+            @Html.Label("Select a Date:")
+            <input type="date" name="date" value="date">
+        </div>
+        <div class="col-lg-8">
+            @Html.Label("Enter either an Order number OR both MSA and Status")
+            @Html.TextBox("Search") <input type="submit" name="search" value="search">
+        </div>
+        @Html.ValidationMessage("OrderViewModel")
+    }
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShipperID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DriverID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompletionDte)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MSA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Duration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OfferType)
+        </th>
+        <th></th>
+    </tr>
+
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShipperID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DriverID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompletionDte)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Code)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MSA)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Duration)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OfferType)
+                </td>
+                @*<td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>*@
+            </tr>
+        }
+    }
+
+    <tr>
+        <td>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        </td>
+    </tr>
+</table>
+
+<script type="text/javascript">
+    $(function () {
+        $('.datepicker').datepicker();
+    });
+</script>
