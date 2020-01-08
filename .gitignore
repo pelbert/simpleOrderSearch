@@ -1,0 +1,11 @@
+bin
+obj
+.vscode
+*.db
+.vs/SimpleOrderSearchConsole/v16/.suo
+.vs/SimpleOrderSearchConsole/v16/Server/sqlite3/db.lock
+.vs/SimpleOrderSearchConsole/config/applicationhost.config
+.vs/SimpleOrderSearchConsole/DesignTimeBuild/.dtbcache
+.vs/SimpleOrderSearchConsole/v16/Server/sqlite3/storage.ide
+.vs/SimpleOrderSearchConsole/v16/Server/sqlite3/storage.ide-shm
+.vs/SimpleOrderSearchConsole/v16/Server/sqlite3/storage.ide-wal
