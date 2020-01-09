@@ -78,7 +78,14 @@ namespace SimpleOrderSearchConsole
 
             var result = await proxy.GetOrder(param);
             Console.WriteLine("This is your orders");
-            Console.WriteLine(JsonConvert.SerializeObject(result.Orders));
+            if(result.Orders.Count == 0)
+            {
+                Console.WriteLine("no order is found");
+            }
+            foreach (var order in result.Orders)
+            {
+                Console.WriteLine(JsonConvert.SerializeObject(order));
+            }
             Console.WriteLine($"current page: {result.Pagination.CurrentPage} , total pages: {result.Pagination.TotalPages}, total items: {result.Pagination.TotalItems} , Item per page: {result.Pagination.ItemPerPage}");
             Console.WriteLine("Please choose following option");
             Console.WriteLine("enter 1 : choose page number");
@@ -96,7 +103,15 @@ namespace SimpleOrderSearchConsole
                 
                 var result = await proxy.GetOrder(param);
                 Console.WriteLine("This is your orders");
-                Console.WriteLine(JsonConvert.SerializeObject(result.Orders));
+            if (result.Orders.Count == 0)
+            {
+                Console.WriteLine("no order is found");
+            }
+            foreach (var order in result.Orders)
+            {
+                Console.WriteLine(JsonConvert.SerializeObject(order));
+            }
+                
                 Console.WriteLine($"current page: {result.Pagination.CurrentPage} , total pages: {result.Pagination.TotalPages}, total items: {result.Pagination.TotalItems} , Item per page: {result.Pagination.ItemPerPage}");
                 Console.WriteLine("Please choose following option");
                 Console.WriteLine("enter 1 : choose page number");
