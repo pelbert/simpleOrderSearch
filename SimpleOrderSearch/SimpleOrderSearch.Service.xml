@@ -46,7 +46,7 @@
             Order Search COntroller
             </summary>
         </member>
-        <member name="M:SimpleOrderSearch.Service.Controllers.OrderSearchController.#ctor(SimpleOrderSearch.Service.Contracts.IDataAccessor{SimpleOrderSearch.Model.OrderInfo},FluentValidation.AbstractValidator{SimpleOrderSearch.Model.OrderSearchQuery})">
+        <member name="M:SimpleOrderSearch.Service.Controllers.OrderSearchController.#ctor(SimpleOrderSearch.Service.Contracts.IDataAccessor{SimpleOrderSearch.Model.OrderInfo},FluentValidation.AbstractValidator{SimpleOrderSearch.Model.OrderSearchQuery},SimpleOrderSearch.Service.Contracts.IOrderSearchHandler)">
             <summary>
             Constructor
             </summary>
@@ -85,6 +85,25 @@
             <summary>
             GraphQl OrderType over OrderInfo object.
             </summary>
+        </member>
+        <member name="T:SimpleOrderSearch.Service.Handlers.OrderSearchHandler">
+            <summary>
+            OrderSearchHandler
+            </summary>
+        </member>
+        <member name="M:SimpleOrderSearch.Service.Handlers.OrderSearchHandler.#ctor(SimpleOrderSearch.Service.Contracts.IDataAccessor{SimpleOrderSearch.Model.OrderInfo},FluentValidation.AbstractValidator{SimpleOrderSearch.Model.OrderSearchQuery})">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:SimpleOrderSearch.Service.Handlers.OrderSearchHandler.HandleSearchOrderRequest(SimpleOrderSearch.Model.OrderSearchQuery,FluentValidation.AbstractValidator{SimpleOrderSearch.Model.OrderSearchQuery},SimpleOrderSearch.Service.Contracts.IDataAccessor{SimpleOrderSearch.Model.OrderInfo})">
+            <summary>
+            
+            </summary>
+            <param name="query"></param>
+            <param name="queryValidator"></param>
+            <param name="dataAccessor"></param>
+            <returns></returns>
         </member>
     </members>
 </doc>

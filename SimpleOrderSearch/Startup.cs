@@ -23,6 +23,7 @@ using GraphiQl;
 using GraphQL.Types.Relay;
 using GraphQL.Relay.Types;
 using SimpleOrderSearch.Service.GraphQL.Types;
+using SimpleOrderSearch.Service.Handlers;
 
 namespace SimpleOrderSearch
 {
@@ -54,7 +55,8 @@ namespace SimpleOrderSearch
                 x.IncludeXmlComments(xmlPath);
             });
 
-            services.AddSingleton<IDataAccessor<OrderInfo>, JsonDataAccessor>();
+            services.AddTransient<IDataAccessor<OrderInfo>, JsonDataAccessor>();
+            services.AddTransient<IOrderSearchHandler, OrderSearchHandler>();
             services.AddSingleton<AbstractValidator<OrderSearchQuery>, OrderSearchQueryValidator>();
             services.AddTransient(typeof(ConnectionType<>));
             services.AddTransient(typeof(EdgeType<>));

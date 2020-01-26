@@ -39,8 +39,6 @@ namespace SimpleOrderSearch.Service.Controllers
             };
             schema.RegisterType<OrderType>();
             
-
-
             var result = await new DocumentExecuter().ExecuteAsync(_ =>
             {
                 _.Schema = schema;
@@ -48,8 +46,6 @@ namespace SimpleOrderSearch.Service.Controllers
                 _.OperationName = query.OperationName;
                 _.Inputs = inputs;
             });
-            
-           
 
             if (result.Errors?.Count > 0)
             {
