@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SimpleOrderSearch.Service</name>
+    </assembly>
+    <members>
+        <member name="T:SimpleOrderSearch.Service.Contracts.IDataAccessor`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:SimpleOrderSearch.Service.Contracts.IDataAccessor`1.GetById(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SimpleOrderSearch.Service.Contracts.IDataAccessor`1.GetAll">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SimpleOrderSearch.Service.Contracts.IDataAccessor`1.GetAllRequested(System.Func{`0,System.Boolean})">
+            <summary>
+            
+            </summary>
+            <param name="predicate"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SimpleOrderSearch.Service.Controllers.GraphQLController">
+            <summary>
+            GraphQLController
+            </summary>
+        </member>
+        <member name="M:SimpleOrderSearch.Service.Controllers.GraphQLController.#ctor(SimpleOrderSearch.Service.Contracts.IDataAccessor{SimpleOrderSearch.Model.OrderInfo})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="dataAccessor"></param>
+        </member>
+        <member name="T:SimpleOrderSearch.Service.Controllers.OrderSearchController">
+            <summary>
+            Order Search COntroller
+            </summary>
+        </member>
+        <member name="M:SimpleOrderSearch.Service.Controllers.OrderSearchController.#ctor(SimpleOrderSearch.Service.Contracts.IDataAccessor{SimpleOrderSearch.Model.OrderInfo},FluentValidation.AbstractValidator{SimpleOrderSearch.Model.OrderSearchQuery},SimpleOrderSearch.Service.Contracts.IOrderSearchHandler)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="dataAccessor"></param>
+            <param name="queryValidator"></param>
+        </member>
+        <member name="M:SimpleOrderSearch.Service.Controllers.OrderSearchController.Get(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.DateTime},System.Int32,System.Int32)">
+            <summary>
+            Gets searched orders results by criteria. Results are returned paged.
+            </summary>
+            <param name="orderNo">Not required but must be greater than zero (0) if specified.</param>
+            <param name="status">Not required. If specified must be in combination with msa.</param>
+            <param name="msa">Not required. If specified must be in combination with status.</param>
+            <param name="completionDate">Always required</param>
+            <param name="page">Indicates number page to be retrived.</param>
+            <param name="pageLimit">Indicates max number of results to be returned per page.</param>
+            <returns>PagedOrderInfo</returns>
+        </member>
+        <member name="T:SimpleOrderSearch.Service.GraphQL.Query.OrderGraphQLQuery">
+            <summary>
+            encapsulates querying for an order using graphql.
+            </summary>
+        </member>
+        <member name="M:SimpleOrderSearch.Service.GraphQL.Query.OrderGraphQLQuery.#ctor(SimpleOrderSearch.Service.Contracts.IDataAccessor{SimpleOrderSearch.Model.OrderInfo})">
+            <summary>
+            constructor
+            </summary>
+            <param name="dataAccessor"></param>
+        </member>
+        <member name="T:SimpleOrderSearch.Service.GraphQL.Types.OrderType">
+            <summary>
+            GraphQl Order Type
+            </summary>
+        </member>
+        <member name="M:SimpleOrderSearch.Service.GraphQL.Types.OrderType.#ctor">
+            <summary>
+            GraphQl OrderType over OrderInfo object.
+            </summary>
+        </member>
+        <member name="T:SimpleOrderSearch.Service.Handlers.OrderSearchHandler">
+            <summary>
+            OrderSearchHandler
+            </summary>
+        </member>
+        <member name="M:SimpleOrderSearch.Service.Handlers.OrderSearchHandler.#ctor(SimpleOrderSearch.Service.Contracts.IDataAccessor{SimpleOrderSearch.Model.OrderInfo},FluentValidation.AbstractValidator{SimpleOrderSearch.Model.OrderSearchQuery})">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:SimpleOrderSearch.Service.Handlers.OrderSearchHandler.HandleSearchOrderRequest(SimpleOrderSearch.Model.OrderSearchQuery,FluentValidation.AbstractValidator{SimpleOrderSearch.Model.OrderSearchQuery},SimpleOrderSearch.Service.Contracts.IDataAccessor{SimpleOrderSearch.Model.OrderInfo})">
+            <summary>
+            
+            </summary>
+            <param name="query"></param>
+            <param name="queryValidator"></param>
+            <param name="dataAccessor"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
