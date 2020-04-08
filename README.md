@@ -1,4 +1,4 @@
-This is my SimpleOrderSearch REST API service (and console client) attempt after ~4 hours of work. This was my first time creating a REST API service from scratch and my first ever ASP.net project.
+This is my SimpleOrderSearch REST API service (and console client) attempt after ~4 hours of work. This was my first time creating a REST API service from scratch and my first ever ASP.net project, so the ~4 hours are both learning and doing.
 
 The concepts seemed somewhat familiar/easy, like how routes work.  Fair amount of fumbling about for exact class/nuget-package to do what I want.
 
