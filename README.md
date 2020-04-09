@@ -1,27 +1,17 @@
-# simpleOrderSearch
-simpleOrderSearch
+This is my SimpleOrderSearch REST API service (and console client) attempt after ~4 hours of work. This was my first time creating a REST API service from scratch and my first ever ASP.net project, so the ~4 hours are both learning and doing.
 
+The concepts seemed somewhat familiar/easy, like how routes work.  Fair amount of fumbling about for exact class/nuget-package to do what I want.
 
-I want to assess your ability to create an application and REST API service. It truly is the bare minimum of knowledge necessary to be successful in this position. I don't want you to spend a lot of time on this. You should be able to do this in an hour or so if the job is right for you.
+Also, the specification requiring an OrderID AND a CompletionDte seemed so
+wrong that I implemented things as if valid search criteria are:  
+    1: OrderID, or...  
+    2: MSA and Status and CompletionDte
 
-Order Search
+I would change things the moment I become convinced that always requiring the
+CompletionDte is a good/necessary thing.
 
-This programming task consists of building a simple console application to search for orders. Fork this repository and create your application. It should take this input from the user:
+To run my stuff, open each solution in Visual Studio 2019 and start debugging.
 
-(Order Number || (MSA && Status)) && CompletionDte
-
-The console application will call a service that you create using C#. I have provided some sample data for the application in the JSON file in the data folder.
-
-
-
-The file contains an array whose elements represent orders. The data should be defined as a model in your service.
-
-The application calling the service can be a console app. You have total freedom to do what you want but make sure it can do these three things:
-
-• Validate that the user has provided the right criteria to make a search
-
-• Provide an offset and page value for pagination.
-
-• Write the outputs of the service call to a console window. 
-
-Create a pull request once you have it working. I will clone your repository, verify that it works, and evaluate it. Please ensure you include any instructions for running that may be required. 
+See `example_client_session.txt` for an example of a client session with both
+searching by OrderID and searching by {MSA, Status, CompletionDte} with
+pagination.
